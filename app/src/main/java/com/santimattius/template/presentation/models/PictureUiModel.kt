@@ -6,4 +6,4 @@ data class PictureUiModel(
     val url: String,
     val height: Int,
     val width: Int,
-) : UiModel(id)
+) : UiItem(id)

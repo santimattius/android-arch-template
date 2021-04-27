@@ -1,6 +1,7 @@
 package com.santimattius.template.data.datasources.implementation.client
 
 import com.santimattius.template.core.Result
+import com.santimattius.template.core.ServiceError
 import com.santimattius.template.data.models.NetworkPicture
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,6 +26,6 @@ class PicSumClient(baseUrl: String) {
     suspend fun fetchList(): Result<List<NetworkPicture>> = try {
         Result.success(service.fetchList())
     } catch (exception: Throwable) {
-        Result.failure(exception)
+        Result.failure(ServiceError())
     }
 }

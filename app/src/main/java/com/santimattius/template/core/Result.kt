@@ -6,10 +6,10 @@ sealed class Result<out T : Any> {
 
         fun <T : Any> success(out: T) = Success(out)
 
-        fun failure(exception: Throwable) = Failure(exception)
+        fun failure(exception: AppException) = Failure(exception)
     }
 }
 
 data class Success<T : Any> internal constructor(val out: T) : Result<T>()
 
-data class Failure(val exception: Throwable) : Result<Nothing>()
+data class Failure(val exception: AppException) : Result<Nothing>()
