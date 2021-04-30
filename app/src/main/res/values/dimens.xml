@@ -2,4 +2,10 @@
 <resources>
     <dimen name="match_constraint">0dp</dimen>
     <dimen name="home_list_padding">10dp</dimen>
+    <dimen name="min_height_image">200dp</dimen>
+    <dimen name="vertical_standard_margin">16dp</dimen>
+    <dimen name="card_bottom_padding">8dp</dimen>
+    <dimen name="card_corner_radius">6dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_text_margin">8dp</dimen>
 </resources>

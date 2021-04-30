@@ -10,7 +10,7 @@ internal fun Picture.asUiModel() =
     PictureUiModel(
         id = id,
         author = author,
-        url = url,
+        url = downloadUrl,
         height = height,
         width = width
     )

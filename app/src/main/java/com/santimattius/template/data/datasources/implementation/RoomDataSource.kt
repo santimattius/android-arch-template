@@ -23,7 +23,7 @@ internal class RoomDataSource(
         picSumDao.getAll()
     }
 
-    override suspend fun insertPictures(pictures: List<Picture>) {
+    override suspend fun insertPictures(pictures: List<Picture>) = withContext(dispatcher) {
         picSumDao.insertPictures(pictures.asDbEntities())
     }
 }

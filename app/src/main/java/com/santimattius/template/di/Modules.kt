@@ -1,10 +1,12 @@
 package com.santimattius.template.di
 
+import com.santimattius.template.core.service
 import com.santimattius.template.data.datasources.LocalDataSource
 import com.santimattius.template.data.datasources.RemoteDataSource
 import com.santimattius.template.data.datasources.implementation.RoomDataSource
 import com.santimattius.template.data.datasources.implementation.ServiceDataSource
 import com.santimattius.template.data.datasources.implementation.client.PicSumClient
+import com.santimattius.template.data.datasources.implementation.client.PicSumService
 import com.santimattius.template.data.datasources.implementation.database.PicSumDataBase
 import com.santimattius.template.data.repositories.PicSumRepository
 import com.santimattius.template.domain.repositories.PicturesRepository
@@ -26,7 +28,9 @@ private val domainModule = module {
 
 private val dataModule = module {
 
-    single<PicSumClient> { PicSumClient(baseUrl = "https://picsum.photos") }
+    single<PicSumService> { service("https://picsum.photos") }
+
+    single<PicSumClient> { PicSumClient(get<PicSumService>()) }
 
     factory<RemoteDataSource> { ServiceDataSource(client = get<PicSumClient>()) }
 

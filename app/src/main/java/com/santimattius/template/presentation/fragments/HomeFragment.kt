@@ -42,8 +42,10 @@ class HomeFragment : Fragment() {
         when (state) {
             is Data -> {
                 loading(visible = false)
+                adapter.submitList(state.values)
             }
             Error -> {
+                loading(visible = false)
                 showError()
             }
             Loading -> {
