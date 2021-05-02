@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -50,12 +49,7 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
     implementation "androidx.recyclerview:recyclerview:$recycler_view_version"
-    implementation 'com.google.android.material:material:1.3.0'
-
-
-    // Navigation
-    implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_version"
-    implementation "android.arch.navigation:navigation-ui-ktx:$navigation_version"
+    implementation "com.google.android.material:material:$material_version"
 
     // Coroutines for getting off the UI thread
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
@@ -90,12 +84,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     kapt "androidx.room:room-compiler:$room_version"
 
-    // WorkManager
-    implementation "android.arch.work:work-runtime-ktx:$work_version"
-
-    //Paging
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-
     implementation "androidx.multidex:multidex:$multidex_version"
 
     //koin
@@ -107,5 +95,9 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     // or Koin for Android Fragment Factory (unstable version)
     implementation "org.koin:koin-androidx-fragment:$koin_version"
+
+    testImplementation testLibs.values()
+    testImplementation androidxTestLibs.values()
+    androidTestImplementation androidTestLibs.values()
 
 }
