@@ -13,7 +13,7 @@ abstract class PicSumDataBase : RoomDatabase() {
 
         private const val DATABASE_NAME = "pic_sum_database"
 
-        fun build(context: Context) =
+        fun create(context: Context) =
             Room.databaseBuilder(context, PicSumDataBase::class.java, DATABASE_NAME)
                 .build()
     }

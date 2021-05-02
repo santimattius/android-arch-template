@@ -2,24 +2,26 @@ package com.santimattius.template.presentation.adapters.viewholders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.santimattius.template.R
+import com.santimattius.template.core.presentation.load
 import com.santimattius.template.databinding.ItemPictureBinding
 import com.santimattius.template.presentation.models.PictureUiModel
 
 class PictureViewHolder(private val itemPictureBinding: ItemPictureBinding) :
     RecyclerView.ViewHolder(itemPictureBinding.root) {
 
-    fun bind(item: PictureUiModel) {
+    fun bind(item: PictureUiModel, onItemClick: (PictureUiModel) -> Unit = {}) {
         with(itemPictureBinding) {
-            image.load(item.url)
-            author.text = item.author
+            image.load(item.imageUrl)
+            author.setAuthor(item.author)
+            itemRootContainer.setOnClickListener { onItemClick(item) }
         }
     }
 
-    private fun ImageView.load(url: String) {
-        Glide.with(context).load(url).into(this)
+    private fun TextView.setAuthor(author: String) {
+        this.text = context.getString(R.string.label_author, author)
     }
 
     companion object {
@@ -33,6 +35,5 @@ class PictureViewHolder(private val itemPictureBinding: ItemPictureBinding) :
             )
             return PictureViewHolder(viewBinding)
         }
-
     }
 }

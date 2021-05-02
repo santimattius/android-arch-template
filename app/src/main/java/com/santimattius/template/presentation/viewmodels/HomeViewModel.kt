@@ -23,10 +23,16 @@ class HomeViewModel(private val getPictures: GetPictures) : ViewModel() {
         pictures()
     }
 
-    private fun pictures() = viewModelScope.launch(exceptionHandler) {
-        _state.postValue(Loading)
-        val pictures = getPictures().asUiModels()
-        _state.postValue(Data(values = pictures))
+    private fun pictures() {
+        viewModelScope.launch(exceptionHandler) {
+            _state.postValue(Loading)
+            val pictures = getPictures().asUiModels()
+            _state.postValue(Data(values = pictures))
+        }
+    }
+
+    fun retry() {
+        pictures()
     }
 }
 

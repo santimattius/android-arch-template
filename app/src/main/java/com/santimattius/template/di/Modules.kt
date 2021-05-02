@@ -17,15 +17,24 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-
+/**
+ * presentation layer definition module
+ */
 private val presentationModule = module {
     viewModel { HomeViewModel(getPictures = get<GetPictures>()) }
 }
 
+
+/**
+ * domain layer definition module
+ */
 private val domainModule = module {
     factory { GetPictures(repository = get<PicturesRepository>()) }
 }
 
+/**
+ * data layer definition module
+ */
 private val dataModule = module {
 
     single<PicSumService> { service("https://picsum.photos") }
@@ -36,7 +45,7 @@ private val dataModule = module {
 
     factory<LocalDataSource> {
         RoomDataSource(
-            database = PicSumDataBase.build(
+            database = PicSumDataBase.create(
                 androidApplication()
             ),
             dispatcher = Dispatchers.IO

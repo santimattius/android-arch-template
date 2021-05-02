@@ -6,14 +6,15 @@ import com.santimattius.template.presentation.adapters.diff.PictureDiffItem
 import com.santimattius.template.presentation.adapters.viewholders.PictureViewHolder
 import com.santimattius.template.presentation.models.PictureUiModel
 
-class HomeAdapter : ListAdapter<PictureUiModel, PictureViewHolder>(PictureDiffItem()) {
+class HomeAdapter(private val onItemClick: (PictureUiModel) -> Unit = {}) :
+    ListAdapter<PictureUiModel, PictureViewHolder>(PictureDiffItem()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PictureViewHolder {
         return PictureViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onItemClick)
     }
 }
 

@@ -24,6 +24,19 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_picture" />
 
+        <TextView
+            android:id="@+id/text_empty_result"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message_text_empty_result"
+            android:textSize="@dimen/text_size_empty_result"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/home_pictures"
+            app:layout_constraintTop_toTopOf="@+id/home_pictures"
+            tools:text="@string/message_text_empty_result" />
+
         <ProgressBar
             android:id="@+id/home_progress_bar"
             style="?android:attr/progressBarStyle"
