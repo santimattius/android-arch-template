@@ -32,7 +32,7 @@
   <img src="https://github.com/santimattius/android-arch-template/blob/readme_start/screenshoot/android-clean-arch-packages.png?raw=true" alt="Project packages"/>
 </p>
 
-## Librerías
+## Librerías (Dependencies)
 
 **[ES]** A continuación encontraras las librerías utilizas para construir el template y segun mi criterio las mas utilizadas en el desarrollo android hasta el momento.
 
@@ -46,9 +46,8 @@
   - https://github.com/square/moshi
 - **Glide** with image loader:
   - https://github.com/bumptech/glide
-- **Kotlin coroutines** and **Kotlion Flow**
+- **Kotlin coroutines**
   - https://kotlinlang.org/docs/reference/coroutines-overview.html
-  - https://kotlinlang.org/docs/reference/coroutines/flow.html
 
 ## Referencias
 
