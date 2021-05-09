@@ -26,6 +26,12 @@
   <img src="https://github.com/santimattius/android-arch-template/blob/readme_start/screenshoot/android-clean-arch-layers.png?raw=true" alt="architecture layers"/>
 </p>
 
+## Paquetes (Packages)
+
+<p align="left">
+  <img src="https://github.com/santimattius/android-arch-template/blob/readme_start/screenshoot/android-clean-arch-packages.png?raw=true" alt="Project packages"/>
+</p>
+
 ## Librerías
 
 **[ES]** A continuación encontraras las librerías utilizas para construir el template y segun mi criterio las mas utilizadas en el desarrollo android hasta el momento.
