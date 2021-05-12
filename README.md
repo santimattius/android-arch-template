@@ -48,6 +48,8 @@
   - https://github.com/bumptech/glide
 - **Kotlin coroutines**
   - https://kotlinlang.org/docs/reference/coroutines-overview.html
+- **Mockk**, testing library
+  - https://mockk.io/  
 
 ## Referencias
 
