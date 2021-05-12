@@ -1,30 +1,64 @@
 package com.santimattius.template.data.datasources.implementation
 
-import org.junit.After
+import com.santimattius.template.data.datasources.implementation.database.PicSumDao
+import com.santimattius.template.data.datasources.implementation.database.PicSumDataBase
+import com.santimattius.template.domain.entities.Picture
+import com.santimattius.template.utils.CoroutinesTestRule
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-import org.junit.Assert.*
-
+@ExperimentalCoroutinesApi
 class RoomDataSourceTest {
+
+    @get:Rule
+    val coroutinesTestRule = CoroutinesTestRule()
+
+    private lateinit var roomDataSource: RoomDataSource
+    private lateinit var dataBase: PicSumDataBase
+    private lateinit var picSumDao: PicSumDao
+
 
     @Before
     fun setUp() {
-    }
-
-    @After
-    fun tearDown() {
-    }
-
-    @Test
-    fun isEmpty() {
+        dataBase = mockk()
+        picSumDao = mockk()
+        roomDataSource = RoomDataSource(dataBase, coroutinesTestRule.testDispatcher)
+        every { dataBase.picSumDao() } returns picSumDao
     }
 
     @Test
-    fun getPictures() {
+    fun isEmpty() = runBlockingTest {
+        //Given
+        every { picSumDao.count() } returns 0
+        // When
+        val isEmpty = roomDataSource.isEmpty()
+        // Then
+        assert(isEmpty)
+        every { picSumDao.count() }
     }
 
     @Test
-    fun insertPictures() {
+    fun getPictures() = runBlockingTest {
+        //Given
+        every { picSumDao.getAll() } returns emptyList()
+        //When
+        val pictures = roomDataSource.getPictures()
+        //Then
+        assert(pictures.isEmpty())
+        every { picSumDao.getAll() }
+    }
+
+    @Test
+    fun insertPictures() = runBlockingTest {
+        val pictures = emptyList<Picture>()
+        every { picSumDao.insertPictures(emptyList()) } returns Unit
+        roomDataSource.insertPictures(pictures)
+        verify { picSumDao.insertPictures(emptyList()) }
     }
 }
