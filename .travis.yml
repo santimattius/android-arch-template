@@ -1,6 +1,7 @@
-language: android
 dist: trusty
-jdk: oraclejdk8
+language: android
+jdk:
+  - oraclejdk8
 env:
   global:
     - ANDROID_TARGET=android-30
@@ -13,14 +14,11 @@ android:
     - android-30
     - $ANDROID_TARGET
     - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
-    - extra-android-m2repository
-    - extra-google-m2repository
-    - extra-android-support
-    - extra-google-google_play_services
-  licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
+    - extra
+notifications:
+  email: false
+before_install:
+  - yes | sdkmanager "platforms;android-30"
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -29,6 +27,13 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+before_script:
+  # Ensure Gradle wrapper is executable
+  - chmod +x gradlew
+  # Ensure signing configuration is present
+  - mv app/gradle.properties.example app/gradle.properties
+  # Reduce memory usage / avoid OutOfMemoryError with Gradle 4.10.3
+  - echo "org.gradle.jvmargs=-Xmx2048m -Xms512m -XX:MaxPermSize=768m" >> gradle.properties
 script:
   - ./gradlew build jacocoTestReport assembleAndroidTest
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
