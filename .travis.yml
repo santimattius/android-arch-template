@@ -13,7 +13,7 @@ android:
     - build-tools-30.0.3
     - android-30
     - $ANDROID_TARGET
-    - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
+    - sys-img-armeabi-v7a-android-30
     - extra
 notifications:
   email: false
@@ -28,16 +28,17 @@ cache:
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
 before_script:
-  # Ensure Gradle wrapper is executable
-  - chmod +x gradlew
-  # Reduce memory usage / avoid OutOfMemoryError with Gradle 4.10.3
-  - echo "org.gradle.jvmargs=-Xmx2048m -Xms512m -XX:MaxPermSize=768m" >> gradle.properties
+    # Ensure Gradle wrapper is executable
+    - chmod +x gradlew
+    # Reduce memory usage / avoid OutOfMemoryError with Gradle 4.10.3
+    - echo "org.gradle.jvmargs=-Xmx2048m -Xms512m -XX:MaxPermSize=768m" >> gradle.properties
+    - echo no | android create avd --force -n test -t android-30 --abi armeabi-v7a -c 100M
+    - emulator -avd test -no-audio -no-window &
+    - android-wait-for-emulator
+    - adb shell input keyevent 82 &
+    - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
 script:
   - ./gradlew build jacocoTestReport assembleAndroidTest
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
   - ./gradlew connectedCheck
 after_success:
   - bash <(curl -s https://codecov.io/bash)
