@@ -1,6 +1,6 @@
 # Android App Template
 
-[![codecov](https://codecov.io/gh/santimattius/android-arch-template/branch/master/graph/badge.svg?token=7ITWBL56NJ)](https://codecov.io/gh/santimattius/android-arch-template)
+[![codecov](https://codecov.io/gh/santimattius/android-arch-template/branch/master/graph/badge.svg?token=7ITWBL56NJ)](https://codecov.io/gh/santimattius/android-arch-template) [![codecov](https://www.travis-ci.com/santimattius/android-arch-template.svg?branch=master)](https://www.travis-ci.com/santimattius/android-arch-template)
 
 **[ES]** Este es un template base para construir una app Android aplicando buenas practicas y utilizando una arquitectura limpia, veras que el código esta super desacoplado con framework externos e incluso con el mismo framework de Android esto te ayudara a por modelar tu dominio puramente en Kotlin si generar dependencias externas.
 
