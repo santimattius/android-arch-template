@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.santimattius.template.data.models.PictureEntity
 
-@Database(entities = [PictureEntity::class], version = 1)
+@Database(entities = [PictureEntity::class], version = 1, exportSchema = false)
 abstract class PicSumDataBase : RoomDatabase() {
 
     companion object {

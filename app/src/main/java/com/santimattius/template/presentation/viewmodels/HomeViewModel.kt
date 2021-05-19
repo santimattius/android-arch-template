@@ -15,7 +15,7 @@ class HomeViewModel(private val getPictures: GetPictures) : ViewModel() {
     val state: LiveData<HomeState>
         get() = _state
 
-    private val exceptionHandler = CoroutineExceptionHandler { _, ex ->
+    private val exceptionHandler = CoroutineExceptionHandler { _, _ ->
         _state.postValue(Error)
     }
 

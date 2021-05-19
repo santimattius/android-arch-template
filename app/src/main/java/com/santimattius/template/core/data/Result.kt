@@ -1,6 +1,4 @@
-package com.santimattius.template.core
-
-import com.santimattius.template.core.data.AppException
+package com.santimattius.template.core.data
 
 sealed class Result<out T : Any> {
 

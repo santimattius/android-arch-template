@@ -1,6 +1,6 @@
 package com.santimattius.template.data.datasources.implementation
 
-import com.santimattius.template.core.Result
+import com.santimattius.template.core.data.Result
 import com.santimattius.template.data.datasources.implementation.client.PicSumClient
 import com.santimattius.template.data.datasources.implementation.client.ServiceError
 import com.santimattius.template.data.models.NetworkPicture
