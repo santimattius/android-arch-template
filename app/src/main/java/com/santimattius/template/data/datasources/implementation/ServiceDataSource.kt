@@ -1,7 +1,7 @@
 package com.santimattius.template.data.datasources.implementation
 
-import com.santimattius.template.core.data.Failure
-import com.santimattius.template.core.data.Success
+import com.santimattius.template.core.Failure
+import com.santimattius.template.core.Success
 import com.santimattius.template.data.datasources.RemoteDataSource
 import com.santimattius.template.data.datasources.implementation.client.PicSumClient
 

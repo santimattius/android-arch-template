@@ -2,9 +2,9 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-}
+    id 'com.hiya.jacoco-android'
 
-apply from: "$project.rootDir/jacoco.gradle"
+}
 
 android {
     compileSdkVersion 30
@@ -30,16 +30,6 @@ android {
             testCoverageEnabled true
         }
     }
-
-//    testOptions {
-//        unitTests.all {
-//            jacoco {
-//                includeNoLocationClasses = true
-//            }
-//        }
-//        unitTests.returnDefaultValues = true
-//    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

@@ -2,15 +2,18 @@ package com.santimattius.template.data.datasources.implementation
 
 import com.santimattius.template.data.datasources.LocalDataSource
 import com.santimattius.template.data.datasources.implementation.database.PicSumDao
+import com.santimattius.template.data.datasources.implementation.database.PicSumDataBase
 import com.santimattius.template.data.models.mapping.asDbEntities
 import com.santimattius.template.domain.entities.Picture
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 internal class RoomDataSource(
-    private val picSumDao: PicSumDao,
+    database: PicSumDataBase,
     private val dispatcher: CoroutineContext
 ) : LocalDataSource {
+
+    private val picSumDao: PicSumDao by lazy { database.picSumDao() }
 
     override suspend fun isEmpty() = withContext(dispatcher) {
         picSumDao.count() <= 0
