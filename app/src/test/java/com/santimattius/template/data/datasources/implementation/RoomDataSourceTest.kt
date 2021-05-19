@@ -1,7 +1,6 @@
 package com.santimattius.template.data.datasources.implementation
 
 import com.santimattius.template.data.datasources.implementation.database.PicSumDao
-import com.santimattius.template.data.datasources.implementation.database.PicSumDataBase
 import com.santimattius.template.domain.entities.Picture
 import com.santimattius.template.utils.CoroutinesTestRule
 import io.mockk.every
@@ -22,16 +21,13 @@ class RoomDataSourceTest {
     val coroutinesTestRule = CoroutinesTestRule()
 
     private lateinit var roomDataSource: RoomDataSource
-    private lateinit var dataBase: PicSumDataBase
     private lateinit var picSumDao: PicSumDao
 
 
     @Before
     fun setUp() {
-        dataBase = mockk()
         picSumDao = mockk()
-        roomDataSource = RoomDataSource(dataBase, coroutinesTestRule.testDispatcher)
-        every { dataBase.picSumDao() } returns picSumDao
+        roomDataSource = RoomDataSource(picSumDao, coroutinesTestRule.testDispatcher)
     }
 
     @Test

@@ -40,7 +40,7 @@ before_script:
   - adb shell settings put global animator_duration_scale 0 &
   - adb shell input keyevent 82 &
 script:
-  - ./gradlew build jacocoTestReport assembleAndroidTest
+  - ./gradlew clean build testDebugUnitTestCoverage
   - ./gradlew connectedCheck
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -f "app/build/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml"
