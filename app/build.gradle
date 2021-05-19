@@ -2,8 +2,66 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'com.hiya.jacoco-android'
+    id 'jacoco'
 
+}
+
+jacoco {
+    toolVersion = "$jacocoVersion"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        xml.destination(file("${buildDir}/reports/jacoco/test/jacocoTestReport.xml"))
+        html.destination(file("${buildDir}/reports/jacoco/test/html"))
+    }
+
+    def fileFilter = ['android/**/*.*',
+                      '**/data/models/*',
+                      '**/R.class',
+                      '**/R$*.class',
+                      '**/com/santimattius/template/com/databinding/databinding/*',
+                      '**/android/databinding/*',
+                      '**/*$ViewInjector*.*',
+                      '**/*$ViewBinder*.*',
+                      '**/BuildConfig.*',
+                      '**/*Application*.*',
+                      '**/*Component*.*',
+                      '**/UiUtils.*',
+                      '**/*Binding*.*',
+                      '**/*Retrofit*.*',
+                      '**/*BR*.*',
+                      '**/*Adapter*.*',
+                      '**/*Fragment*.*',
+                      '**/*Activity*.*',
+                      '**/*ViewHolder*.*',
+                      '**/Manifest*.*',
+                      '**/*$Lambda$*.*',
+                      '**/*Module.*',
+                      '**/*MembersInjector*.*',
+                      '**/*_Provide*Factory*.*'
+    ]
+
+
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    def coverageSourceDirs = [
+            'src/main/java',
+    ]
+
+    additionalSourceDirs(files(coverageSourceDirs))
+    sourceDirectories.setFrom(files([mainSrc]))
+    classDirectories.setFrom(files([debugTree]))
+    executionData.setFrom(files("${project.buildDir}/jacoco/testDebugUnitTest.exec"))
 }
 
 android {
@@ -43,29 +101,6 @@ android {
     }
 }
 
-def androidExclusion = [
-        '**/databinding/**/*.*',
-        '**/android/databinding/*Binding.*',
-        '**/BR.*',
-        '**/R.*',
-        '**/R$*.*',
-        '**/BuildConfig.*',
-        '**/Manifest*.*',
-        '**/*_MembersInjector.*',
-        '**/Dagger*Component.*',
-        '**/Dagger*Component$Builder.*',
-        '**/*Module_*Factory.*',
-        '**/*Fragment*.*',
-        '**/*Activity*.*',
-        '**/*Adapter*.*',
-        '**/*ViewPager*.*',
-        '**/*ViewHolder*.*',
-        '**/*Module*.*'
-]
-
-jacocoAndroidUnitTestReport {
-    excludes += androidExclusion
-}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
