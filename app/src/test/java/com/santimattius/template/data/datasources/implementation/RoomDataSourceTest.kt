@@ -1,6 +1,7 @@
 package com.santimattius.template.data.datasources.implementation
 
 import com.santimattius.template.data.datasources.implementation.database.PicSumDao
+import com.santimattius.template.data.datasources.implementation.database.PicSumDataBase
 import com.santimattius.template.domain.entities.Picture
 import com.santimattius.template.utils.CoroutinesTestRule
 import io.mockk.every
@@ -8,8 +9,6 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.hamcrest.core.IsEqual
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -21,34 +20,26 @@ class RoomDataSourceTest {
     val coroutinesTestRule = CoroutinesTestRule()
 
     private lateinit var roomDataSource: RoomDataSource
+    private lateinit var dataBase: PicSumDataBase
     private lateinit var picSumDao: PicSumDao
 
 
     @Before
     fun setUp() {
+        dataBase = mockk()
         picSumDao = mockk()
-        roomDataSource = RoomDataSource(picSumDao, coroutinesTestRule.testDispatcher)
+        roomDataSource = RoomDataSource(dataBase, coroutinesTestRule.testDispatcher)
+        every { dataBase.picSumDao() } returns picSumDao
     }
 
     @Test
-    fun `validate is empty check`() = runBlockingTest {
+    fun isEmpty() = runBlockingTest {
         //Given
         every { picSumDao.count() } returns 0
         // When
         val isEmpty = roomDataSource.isEmpty()
         // Then
         assert(isEmpty)
-        every { picSumDao.count() }
-    }
-
-    @Test
-    fun `validate no is empty check`() = runBlockingTest {
-        //Given
-        every { picSumDao.count() } returns 10
-        // When
-        val isEmpty = roomDataSource.isEmpty()
-        // Then
-        Assert.assertThat(isEmpty, IsEqual(false))
         every { picSumDao.count() }
     }
 

@@ -45,9 +45,9 @@ private val dataModule = module {
 
     factory<LocalDataSource> {
         RoomDataSource(
-            picSumDao = PicSumDataBase.create(
+            database = PicSumDataBase.create(
                 androidApplication()
-            ).picSumDao(),
+            ),
             dispatcher = Dispatchers.IO
         )
     }
