@@ -48,5 +48,19 @@ class HomeViewModelTest {
         Assert.assertEquals(viewModel.state.getOrAwaitValue(), Error)
     }
 
+    @ExperimentalCoroutinesApi
+    @Test
+    fun `check case with retry`() = runBlockingTest {
+
+        val userCase = mockk<GetPictures>()
+
+        coEvery { userCase() } returns emptyList()
+
+        val viewModel = HomeViewModel(userCase)
+
+        viewModel.retry()
+
+        Assert.assertEquals(viewModel.state.getOrAwaitValue(), Data(emptyList()))
+    }
 
 }
