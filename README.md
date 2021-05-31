@@ -2,9 +2,9 @@
 
 [![codecov](https://codecov.io/gh/santimattius/android-arch-template/branch/master/graph/badge.svg?token=7ITWBL56NJ)](https://codecov.io/gh/santimattius/android-arch-template) [![codecov](https://www.travis-ci.com/santimattius/android-arch-template.svg?token=P7xvicFZMo2reEHHNuJS&branch=master)](https://www.travis-ci.com/santimattius/android-arch-template)
 
-**[ES]** Este es un template base para construir una app Android aplicando buenas practicas y utilizando una arquitectura limpia, veras que el código esta super desacoplado con framework externos e incluso con el mismo framework de Android esto te ayudara a por modelar tu dominio puramente en Kotlin si generar dependencias externas.
+**[ES]** Este es un template para construir una app Android aplicando buenas practicas y utilizando una arquitectura limpia, veras que el código esta super desacoplado con framework externos e incluso con el mismo framework de Android esto te ayudara a por modelar tu dominio puramente en Kotlin si generar dependencias externas.
 
-**[EN]** This is a base template to build an Android app applying good practices and using a clean architecture, you will see that the code is super decoupled with external frameworks and even with the same Android framework, this will help you to model your domain purely in Kotlin without generating external dependencies.
+**[EN]** This is a template to build an Android app applying good practices and using a clean architecture, you will see that the code is super decoupled with external frameworks and even with the same Android framework, this will help you to model your domain purely in Kotlin without generating external dependencies.
 
 <p align="center">
   <img src="https://github.com/santimattius/android-arch-template/blob/readme_start/screenshoot/android-clean-arch-capture.png?raw=true" alt="App Capture"/>
