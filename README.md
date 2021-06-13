@@ -30,7 +30,7 @@ In the following images you will see how the app is built and what its levels of
   <img src="https://github.com/santimattius/android-arch-template/blob/readme_start/screenshoot/android-clean-arch-packages.png?raw=true" alt="Project packages"/>
 </p>
 
-## Dependencies)
+## Dependencies
 
 Below you will find the libraries used to build the template and according to my criteria the most used in android development so far.
 
