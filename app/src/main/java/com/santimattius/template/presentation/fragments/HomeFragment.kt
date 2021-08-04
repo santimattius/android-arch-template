@@ -13,6 +13,10 @@ import com.santimattius.template.core.presentation.openLink
 import com.santimattius.template.core.presentation.showDialog
 import com.santimattius.template.databinding.HomeFragmentBinding
 import com.santimattius.template.presentation.adapters.HomeAdapter
+import com.santimattius.template.presentation.models.Data
+import com.santimattius.template.presentation.models.Error
+import com.santimattius.template.presentation.models.HomeState
+import com.santimattius.template.presentation.models.Loading
 import com.santimattius.template.presentation.viewmodels.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
