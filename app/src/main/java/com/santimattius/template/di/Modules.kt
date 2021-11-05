@@ -1,6 +1,6 @@
 package com.santimattius.template.di
 
-import com.santimattius.template.core.service
+import com.santimattius.template.core.data.service
 import com.santimattius.template.data.datasources.LocalDataSource
 import com.santimattius.template.data.datasources.RemoteDataSource
 import com.santimattius.template.data.datasources.implementation.RoomDataSource
@@ -37,7 +37,7 @@ private val domainModule = module {
  */
 private val dataModule = module {
 
-    single<PicSumService> { service("https://picsum.photos") }
+    single<PicSumService> { service(baseUrl = "https://pictures.getsandbox.com:443") }
 
     single<PicSumClient> { PicSumClient(get<PicSumService>()) }
 

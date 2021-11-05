@@ -3,17 +3,16 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'com.hiya.jacoco-android'
-
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.santimattius.template"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -38,8 +37,8 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures {
-        viewBinding = true
+    viewBinding {
+        enabled = true
     }
 }
 
@@ -86,20 +85,20 @@ dependencies {
 
     // Retrofit for networking
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutines_adapter_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_interceptor_version"
 
-    // Moshi for parsing the JSON format
-    implementation "com.squareup.moshi:moshi:$moshi_version"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    // Gson for parsing the JSON format
+    implementation "com.google.code.gson:gson:$gson_version"
+
 
     // Joda time library for dealing with time
     implementation "joda-time:joda-time:$joda_version"
 
     // ViewModel and LiveData (arch components)
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_extensions_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx_version"
 
     // Logging
     implementation "com.jakewharton.timber:timber:$timber_version"
@@ -115,15 +114,16 @@ dependencies {
 
     implementation "androidx.multidex:multidex:$multidex_version"
 
-    //koin
-    // Koin for Android
-    implementation "org.koin:koin-android:$koin_version"
-    // or Koin for Lifecycle scoping
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    // or Koin for Android Architecture ViewModel
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    // or Koin for Android Fragment Factory (unstable version)
-    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    // Koin core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+
+    // Koin test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    // Koin core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+
+    // Koin main features for Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android:$koin_version"
 
     testImplementation testLibs.values()
     testImplementation androidxTestLibs.values()

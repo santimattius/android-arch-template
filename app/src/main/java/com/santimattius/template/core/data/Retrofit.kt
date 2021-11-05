@@ -1,9 +1,9 @@
-package com.santimattius.template.core
+package com.santimattius.template.core.data
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 private val okHttpClient = HttpLoggingInterceptor().run {
     level = HttpLoggingInterceptor.Level.BODY
@@ -16,5 +16,5 @@ internal inline fun <reified S> service(baseUrl: String): S = create(baseUrl = b
 private fun create(baseUrl: String) = Retrofit.Builder()
     .baseUrl(baseUrl)
     .client(okHttpClient)
-    .addConverterFactory(MoshiConverterFactory.create())
+    .addConverterFactory(GsonConverterFactory.create())
     .build()

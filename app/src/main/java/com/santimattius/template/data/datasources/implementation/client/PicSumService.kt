@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface PicSumService {
 
-    @GET("/v2/list")
+    @GET("/pictures")
     suspend fun fetchList(): List<NetworkPicture>
 }
