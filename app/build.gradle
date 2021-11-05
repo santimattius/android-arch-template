@@ -40,6 +40,11 @@ android {
     viewBinding {
         enabled = true
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 def androidExclusion = [
@@ -92,7 +97,6 @@ dependencies {
     // Gson for parsing the JSON format
     implementation "com.google.code.gson:gson:$gson_version"
 
-
     // Joda time library for dealing with time
     implementation "joda-time:joda-time:$joda_version"
 
@@ -116,17 +120,30 @@ dependencies {
 
     // Koin core features
     implementation "io.insert-koin:koin-core:$koin_version"
-
-    // Koin test features
-    testImplementation "io.insert-koin:koin-test:$koin_version"
-    // Koin core features
-    implementation "io.insert-koin:koin-core:$koin_version"
-
     // Koin main features for Android (Scope,ViewModel ...)
     implementation "io.insert-koin:koin-android:$koin_version"
 
-    testImplementation testLibs.values()
-    testImplementation androidxTestLibs.values()
-    androidTestImplementation androidTestLibs.values()
+    // Koin test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0"
+    testImplementation 'io.mockk:mockk:1.11.0'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    //robolectric
+    testImplementation 'org.robolectric:robolectric:4.6'
+
+    // Testing-only dependencies
+    // To use the androidx.test.core APIs
+    androidTestImplementation "androidx.test:core:1.4.0"
+    // Kotlin extensions for androidx.test.core
+    androidTestImplementation "androidx.test:core-ktx:1.4.0"
+    // To use the androidx.test.espresso
+    androidTestImplementation "androidx.test:espresso:espresso-core:3.4.0"
+    // To use the JUnit Extension APIs
+    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    // Kotlin extensions for androidx.test.ext.junit
+    androidTestImplementation "androidx.test.ext:junit-ktx:1.1.3"
+    // To use the androidx.test.runner APIs
+    androidTestImplementation "androidx.test.runner:1.4.0"
 
 }

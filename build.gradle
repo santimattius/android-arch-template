@@ -25,23 +25,6 @@ buildscript {
         recycler_view_version = '1.2.1'
         multidex_version = '2.0.1'
         okhttp_interceptor_version = '4.2.1'
-
-        testLibs = [
-                junit        : 'junit:junit:4.12',
-                coroutineTest: 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1',
-                mockk        : 'io.mockk:mockk:1.11.0',
-        ]
-
-        androidxTestLibs = [
-                archCoreTesting: 'androidx.arch.core:core-testing:2.1.0'
-        ]
-
-        androidTestLibs = [
-                testRunner   : 'androidx.test:runner:1.2.0',
-                espresso     : 'androidx.test.espresso:espresso-contrib:3.2.0',
-                rules        : 'androidx.test:rules:1.2.0',
-                extJunit     : 'androidx.test.ext:junit-ktx:1.1.1',
-        ]
     }
 
     repositories {
