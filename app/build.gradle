@@ -40,6 +40,11 @@ android {
     viewBinding {
         enabled = true
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 def androidExclusion = [
@@ -92,7 +97,6 @@ dependencies {
     // Gson for parsing the JSON format
     implementation "com.google.code.gson:gson:$gson_version"
 
-
     // Joda time library for dealing with time
     implementation "joda-time:joda-time:$joda_version"
 
@@ -116,17 +120,41 @@ dependencies {
 
     // Koin core features
     implementation "io.insert-koin:koin-core:$koin_version"
-
-    // Koin test features
-    testImplementation "io.insert-koin:koin-test:$koin_version"
-    // Koin core features
-    implementation "io.insert-koin:koin-core:$koin_version"
-
     // Koin main features for Android (Scope,ViewModel ...)
     implementation "io.insert-koin:koin-android:$koin_version"
 
-    testImplementation testLibs.values()
-    testImplementation androidxTestLibs.values()
-    androidTestImplementation androidTestLibs.values()
+    // Koin test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0"
+    testImplementation 'io.mockk:mockk:1.11.0'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    //robolectric
+    testImplementation 'org.robolectric:robolectric:4.6'
 
+    // Core library
+    androidTestImplementation 'androidx.test:core:1.4.0'
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+
+    // Assertions
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.ext:truth:1.4.0'
+    androidTestImplementation 'com.google.truth:truth:1.0'
+
+    // Espresso dependencies
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-accessibility:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-web:3.4.0'
+    androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:3.4.0'
+
+    // The following Espresso dependency can be either "implementation"
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK's compile classpath or the test APK
+    // classpath.
+    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.4.0'
 }
