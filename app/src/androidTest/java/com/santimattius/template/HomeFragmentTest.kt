@@ -15,6 +15,8 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.Matchers.not
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -35,6 +37,16 @@ class HomeFragmentTest : UITest() {
         get() = module {
             factory<GetPictures> { getPictures }
         }
+
+    @Before
+    override fun setup() {
+        super.setup()
+    }
+
+    @After
+    override fun tearDown() {
+        super.tearDown()
+    }
 
     @Test
     fun firstFragmentTests() = runBlockingTest {
@@ -78,7 +90,7 @@ class HomeFragmentTest : UITest() {
     }
 
     private fun givenThereAreNoPictures() {
-        coEvery { getPictures() } returns emptyList()
+        coEvery { getPictures.invoke() } returns emptyList()
     }
 
     private fun givenThereAreSomePictures(): List<PictureUiModel> {
