@@ -88,9 +88,12 @@ android {
     }
 
     packagingOptions {
+        resources.excludes.add("**/attach_hotspot_windows.dll")
         resources.excludes.add("META-INF/*")
     }
+
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -161,7 +164,9 @@ dependencies {
         force true
     }
     androidTestImplementation "io.mockk:mockk:$mockk_version"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_testing_version"
+    androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_testing_version"){
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+    }
     androidTestImplementation "io.insert-koin:koin-test:$koin_version"
     // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation "androidx.test:runner:$runner_version"
