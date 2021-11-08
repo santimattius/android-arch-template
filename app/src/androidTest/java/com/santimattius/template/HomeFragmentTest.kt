@@ -15,8 +15,6 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.Matchers.not
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -38,18 +36,8 @@ class HomeFragmentTest : UITest() {
             factory<GetPictures> { getPictures }
         }
 
-    @Before
-    override fun setup() {
-        super.setup()
-    }
-
-    @After
-    override fun tearDown() {
-        super.tearDown()
-    }
-
     @Test
-    fun firstFragmentTests() = runBlockingTest {
+    fun showsEmptyCaseIfThereAreNoPictures() = runBlockingTest {
         givenThereAreNoPictures()
         launchFragment()
         onView(withText("No hay resultados")).check(matches(isDisplayed()))
