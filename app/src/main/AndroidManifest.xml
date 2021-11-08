@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidarchtemplate">
-        <activity android:name=".presentation.activities.MainActivity"
+        <activity
+            android:name=".presentation.activities.MainActivity"
             android:exported="true">
-            <intent-filter>
+            <intent-filter android:exported="true">
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

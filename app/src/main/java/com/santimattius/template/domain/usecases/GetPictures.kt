@@ -4,5 +4,5 @@ import com.santimattius.template.domain.repositories.PicturesRepository
 
 class GetPictures(private val repository: PicturesRepository) {
 
-    suspend operator fun invoke() = repository.getPictures()
+    suspend operator fun invoke() =  repository.getPictures()
 }

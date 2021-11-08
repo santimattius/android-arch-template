@@ -19,7 +19,6 @@ class GetPicturesTest {
     fun setUp() {
         repository = mockk()
         useCase = GetPictures(repository)
-
     }
 
     @Test

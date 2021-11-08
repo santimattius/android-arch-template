@@ -31,7 +31,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private lateinit var viewBinding: HomeFragmentBinding
 
     override fun onCreateView(

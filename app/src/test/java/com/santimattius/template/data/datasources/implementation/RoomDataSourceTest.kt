@@ -8,6 +8,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Assert
 import org.junit.Before
@@ -48,7 +49,7 @@ class RoomDataSourceTest {
         // When
         val isEmpty = roomDataSource.isEmpty()
         // Then
-        Assert.assertThat(isEmpty, IsEqual(false))
+        assertThat(isEmpty, IsEqual(false))
         every { picSumDao.count() }
     }
 
