@@ -163,7 +163,7 @@ dependencies {
     androidTestImplementation("androidx.test:core:$test_core_version") {
         force true
     }
-    androidTestImplementation "io.mockk:mockk:$mockk_version"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
     androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_testing_version"){
         exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
     }
