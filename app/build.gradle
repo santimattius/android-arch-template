@@ -71,11 +71,6 @@ android {
         enabled = true
     }
     testOptions {
-        unitTests.all {
-            jacoco {
-                includeNoLocationClasses = true
-            }
-        }
         unitTests {
             includeAndroidResources = true
         }

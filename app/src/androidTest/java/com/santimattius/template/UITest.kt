@@ -4,6 +4,7 @@ import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.santimattius.template.core.EspressoIdlingResource
+import io.mockk.MockKAnnotations
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
@@ -18,6 +19,7 @@ abstract class UITest : KoinTest {
 
     @Before
     fun setup() {
+        MockKAnnotations.init(this)
         loadKoinModules(dependencies)
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
     }

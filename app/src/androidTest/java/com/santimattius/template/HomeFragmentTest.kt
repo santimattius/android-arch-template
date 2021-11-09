@@ -11,6 +11,7 @@ import com.santimattius.template.presentation.models.PictureUiModel
 import com.santimattius.template.presentation.models.mapping.asUiModels
 import com.santimattius.template.recyclerview.RecyclerViewInteraction
 import io.mockk.coEvery
+import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -29,7 +30,8 @@ class HomeFragmentTest : UITest() {
     @get:Rule
     val coroutinesTestRule = CoroutinesTestRule()
 
-    private val getPictures: GetPictures = mockk(relaxed = true)
+    @MockK
+    private lateinit var getPictures: GetPictures
 
     override val dependencies: Module
         get() = module {
