@@ -17,7 +17,7 @@ import com.santimattius.template.presentation.models.Data
 import com.santimattius.template.presentation.models.Error
 import com.santimattius.template.presentation.models.HomeState
 import com.santimattius.template.presentation.models.Loading
-import com.santimattius.template.presentation.viewmodels.*
+import com.santimattius.template.presentation.viewmodels.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -30,7 +30,6 @@ class HomeFragment : Fragment() {
             openLink(it.imageUrl)
         }
     }
-
 
     private lateinit var viewBinding: HomeFragmentBinding
 
