@@ -38,8 +38,8 @@ Below you will find the libraries used to build the template and according to my
   - https://insert-koin.io/
 - **Retrofit** - networking: 
   - https://square.github.io/retrofit/
-- **Moshi** - json parser:
-  - https://github.com/square/moshi
+- **Gson** - json parser:
+  - https://github.com/google/gson
 - **Glide** with image loader:
   - https://github.com/bumptech/glide
 - **Kotlin coroutines**
