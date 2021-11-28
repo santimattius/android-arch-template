@@ -46,6 +46,19 @@ Below you will find the libraries used to build the template and according to my
   - https://kotlinlang.org/docs/reference/coroutines-overview.html
 - **Mockk**, testing library
   - https://mockk.io/  
+- **Espresso**:
+  - https://developer.android.com/training/testing/espresso
+
+## Run Espresso Tests
+
+```
+  ./gradlew connectedCheck
+```
+
+
+
+https://user-images.githubusercontent.com/22333101/143724407-72b5920c-bacd-4d1f-a1e8-c6bca8f2759a.mov
+
 
 ## Referencias
 
