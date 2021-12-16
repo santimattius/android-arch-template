@@ -10,7 +10,8 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.core.IsEqual
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -34,7 +35,7 @@ class HomeViewModelTest {
 
         val viewModel = HomeViewModel(userCase)
 
-        Assert.assertEquals(viewModel.state.getOrAwaitValue(), Data(emptyList()))
+        assertThat(viewModel.state.getOrAwaitValue(), IsEqual(Data(emptyList())))
     }
 
     @ExperimentalCoroutinesApi
@@ -47,7 +48,7 @@ class HomeViewModelTest {
 
         val viewModel = HomeViewModel(userCase)
 
-        Assert.assertEquals(viewModel.state.getOrAwaitValue(), Error)
+        assertThat(viewModel.state.getOrAwaitValue(), IsEqual(Error))
     }
 
     @ExperimentalCoroutinesApi
@@ -62,7 +63,7 @@ class HomeViewModelTest {
 
         viewModel.retry()
 
-        Assert.assertEquals(viewModel.state.getOrAwaitValue(), Data(emptyList()))
+        assertThat(viewModel.state.getOrAwaitValue(), IsEqual(Data(emptyList())))
     }
 
 }
