@@ -182,4 +182,7 @@ dependencies {
     debugImplementation("androidx.fragment:fragment-testing:$fragment_version") {
         exclude group: "androidx.test", module: "core"
     }
+
+    //UI Automator
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
 }
