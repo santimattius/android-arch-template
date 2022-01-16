@@ -184,5 +184,5 @@ dependencies {
     }
 
     //UI Automator
-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$ui_automator"
 }
